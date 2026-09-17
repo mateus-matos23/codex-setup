@@ -1,45 +1,27 @@
-model = "gpt-5.6-luna"
+model = "gpt-5.6-terra"
+
 model_provider = "openai"
-model_reasoning_effort = "high"
-plan_mode_reasoning_effort = "high"
+
+model_reasoning_effort = "medium"
+
+plan_mode_reasoning_effort = "medium"
+
 model_reasoning_summary = "none"
+
 model_verbosity = "low"
+
+personality = "pragmatic"
+
 approval_policy = "on-request"
+
 sandbox_mode = "workspace-write"
-tool_output_token_limit = 8000
 
-[projects."/home/mateus/Trabalho/sgi-backend"]
-trust_level = "trusted"
+tool_output_token_limit = 4000
 
-[projects."/home/mateus/Trabalho/portal-gdp-backend"]
-trust_level = "trusted"
+# Project trust is machine-specific. Keep it in an ignored local profile.
 
-[projects."/home/mateus/Trabalho/portal-gdp-frontend"]
-trust_level = "trusted"
-
-[projects."/home/mateus/Trabalho/sgi-frontend"]
-trust_level = "trusted"
-
-[projects."/home/mateus/Trabalho"]
-trust_level = "trusted"
-
-[projects."/home/mateus/Trabalho/sgi-backend-2"]
-trust_level = "trusted"
-
-[projects."/home/mateus/Trabalho/microservice-python"]
-trust_level = "trusted"
-
-[projects."/home/mateus/Trabalho/gestao-ferias"]
-trust_level = "trusted"
-
-[projects."/home/mateus/Trabalho/fluxo-solicitacao"]
-trust_level = "trusted"
-
-[projects."/home/mateus/.codex"]
-trust_level = "trusted"
-
-[projects."/home/mateus/Trabalho/ia-docs"]
-trust_level = "trusted"
+[skills]
+max_context_tokens = 2000
 
 [tui]
 theme = "dracula"
@@ -55,10 +37,8 @@ memories = true
 multi_agent = true
 shell_tool = true
 
-[profiles.investigate]
-model = "gpt-5.6-luna"
-model_reasoning_effort = "low"
-sandbox_mode = "read-only"
+[agents]
+max_concurrent_threads_per_session = 1
 
 [agents.explorer]
 description = "Leitura e mapeamento de código somente leitura: busca de arquivos, rastreio de dependências, levantamento de contexto antes de uma implementação."
@@ -73,6 +53,6 @@ model_reasoning_effort = "medium"
 
 [agents.reviewer]
 description = "Revisão de PR/diff focada em corretude, segurança e decisões de arquitetura antes de considerar a tarefa concluída."
-model = "gpt-5.6-sol"
-model_reasoning_effort = "high"
+model = "gpt-5.6-terra"
+model_reasoning_effort = "medium"
 sandbox_mode = "read-only"

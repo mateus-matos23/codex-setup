@@ -1,0 +1,6 @@
+# Copy this file to profiles/<machine>.local.config.toml and replace the
+# absolute paths with projects trusted on that machine.
+# Local profiles are installed by scripts/install.sh and are ignored by Git.
+
+[projects."/absolute/path/to/project"]
+trust_level = "trusted"
