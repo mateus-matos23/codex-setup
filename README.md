@@ -1,0 +1,1 @@
+Repositório destinado a centralizar arquivos de configurações dos agentes de IA que utilizo.
