@@ -1,0 +1,78 @@
+model = "gpt-5.6-luna"
+model_provider = "openai"
+model_reasoning_effort = "high"
+plan_mode_reasoning_effort = "high"
+model_reasoning_summary = "none"
+model_verbosity = "low"
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+tool_output_token_limit = 8000
+
+[projects."/home/mateus/Trabalho/sgi-backend"]
+trust_level = "trusted"
+
+[projects."/home/mateus/Trabalho/portal-gdp-backend"]
+trust_level = "trusted"
+
+[projects."/home/mateus/Trabalho/portal-gdp-frontend"]
+trust_level = "trusted"
+
+[projects."/home/mateus/Trabalho/sgi-frontend"]
+trust_level = "trusted"
+
+[projects."/home/mateus/Trabalho"]
+trust_level = "trusted"
+
+[projects."/home/mateus/Trabalho/sgi-backend-2"]
+trust_level = "trusted"
+
+[projects."/home/mateus/Trabalho/microservice-python"]
+trust_level = "trusted"
+
+[projects."/home/mateus/Trabalho/gestao-ferias"]
+trust_level = "trusted"
+
+[projects."/home/mateus/Trabalho/fluxo-solicitacao"]
+trust_level = "trusted"
+
+[projects."/home/mateus/.codex"]
+trust_level = "trusted"
+
+[projects."/home/mateus/Trabalho/ia-docs"]
+trust_level = "trusted"
+
+[tui]
+theme = "dracula"
+status_line = ["model-with-reasoning", "git-branch", "context-used", "current-dir", "weekly-limit", "five-hour-limit"]
+status_line_use_colors = true
+
+[tui.model_availability_nux]
+"gpt-5.6-sol" = 4
+gpt-6-astra = 4
+
+[features]
+memories = true
+multi_agent = true
+shell_tool = true
+
+[profiles.investigate]
+model = "gpt-5.6-luna"
+model_reasoning_effort = "low"
+sandbox_mode = "read-only"
+
+[agents.explorer]
+description = "Leitura e mapeamento de código somente leitura: busca de arquivos, rastreio de dependências, levantamento de contexto antes de uma implementação."
+model = "gpt-5.6-luna"
+model_reasoning_effort = "low"
+sandbox_mode = "read-only"
+
+[agents.worker]
+description = "Implementação de código e correção de bugs a partir de um requisito já definido, sem ambiguidade."
+model = "gpt-5.6-terra"
+model_reasoning_effort = "medium"
+
+[agents.reviewer]
+description = "Revisão de PR/diff focada em corretude, segurança e decisões de arquitetura antes de considerar a tarefa concluída."
+model = "gpt-5.6-sol"
+model_reasoning_effort = "high"
+sandbox_mode = "read-only"
