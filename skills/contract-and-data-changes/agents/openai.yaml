@@ -1,0 +1,6 @@
+interface:
+  display_name: "Contract and Data Changes"
+  short_description: "Keep APIs, data and migrations aligned"
+  default_prompt: "Use $contract-and-data-changes to plan this contract or data change safely."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Performance-Aware Development"
+  short_description: "Catch costly code paths early"
+policy:
+  allow_implicit_invocation: false

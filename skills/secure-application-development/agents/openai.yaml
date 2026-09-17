@@ -1,0 +1,5 @@
+interface:
+  display_name: "Secure Application Development"
+  short_description: "Validate inputs and contain failures"
+policy:
+  allow_implicit_invocation: false

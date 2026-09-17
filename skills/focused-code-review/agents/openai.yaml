@@ -1,0 +1,5 @@
+interface:
+  display_name: "Focused Code Review"
+  short_description: "Review behavior and contract risks"
+policy:
+  allow_implicit_invocation: false

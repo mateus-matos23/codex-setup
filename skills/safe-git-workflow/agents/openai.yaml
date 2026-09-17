@@ -1,0 +1,5 @@
+interface:
+  display_name: "Safe Git Workflow"
+  short_description: "Protect branches and shared history"
+policy:
+  allow_implicit_invocation: false

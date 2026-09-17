@@ -1,0 +1,5 @@
+interface:
+  display_name: "Incremental Implementation"
+  short_description: "Implement small complete code slices"
+policy:
+  allow_implicit_invocation: false

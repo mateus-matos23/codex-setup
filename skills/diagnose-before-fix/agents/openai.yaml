@@ -1,0 +1,5 @@
+interface:
+  display_name: "Diagnose Before Fix"
+  short_description: "Find root causes before fixing bugs"
+policy:
+  allow_implicit_invocation: false

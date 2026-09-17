@@ -1,0 +1,4 @@
+interface:
+  display_name: "Software Development Workflow"
+  short_description: "Plan, implement and validate code changes"
+  default_prompt: "Use $software-development-workflow to plan and execute this code change with small validated slices."

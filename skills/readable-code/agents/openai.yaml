@@ -1,0 +1,5 @@
+interface:
+  display_name: "Readable Code"
+  short_description: "Reduce cognitive load in code"
+policy:
+  allow_implicit_invocation: false
