@@ -1,48 +1,73 @@
 ## Escopo
+
 Estas são preferências globais. Siga primeiro as convenções, a arquitetura e os
 comandos definidos pelo repositório atual.
 
 ## Decisões
-- Pare e pergunte quando a ambiguidade puder alterar contrato, dados, segurança ou comportamento observável.
-- Para ambiguidade técnica de baixo impacto, siga o padrão do projeto e registre a suposição em 1 linha no fim.
+
+- Pare e pergunte quando a ambiguidade puder alterar contrato, dados, segurança
+  ou comportamento observável.
+- Para ambiguidade técnica de baixo impacto, siga o padrão do projeto e
+  registre a suposição em uma linha no fim.
 
 ## Código
-- Legibilidade > esperteza. Se precisa de comentário para explicar o quê, reescreva mais simples.
-- Nomes devem explicar a responsabilidade sem abrir o corpo da função.
-- Prefira funções pequenas, cada uma com uma responsabilidade.
-- Respeite o sistema de tipos e as regras do projeto; não burle o compilador com tipos permissivos ou casts sem justificativa.
-- Não esconda erros com `try/catch` genérico ou fallback silencioso em input inválido.
-- Procure utilitários e helpers existentes antes de criar novos.
-- Não introduza abstrações, configurações ou flexibilidade especulativa.
-- Edite em lotes lógicos e preserve alterações não relacionadas.
-- Considere complexidade ciclomática e Big O em algoritmos.
 
-## Navegação e ferramentas
-- Prefira Serena para navegação semântica quando estiver disponível e for apropriado; use ferramentas locais como fallback.
-- Leia somente o trecho relevante, salvo quando o contexto completo for necessário.
-- Não repita buscas ou leituras sem motivo concreto.
-- Para documentação de bibliotecas, frameworks, SDKs, APIs, CLIs e serviços, consulte a documentação oficial atual; use `ctx7` para terceiros e OpenAI Docs para produtos OpenAI/Codex.
+- Corretude, contratos e segurança vêm antes de simplicidade; depois prefira a
+  solução simples, testável e de baixo acoplamento.
+- Prefira nomes que expliquem a responsabilidade, funções pequenas e arquivos
+  coesos. Extraia somente quando isso reduzir esforço cognitivo, isolar efeitos
+  ou criar uma fronteira de teste.
+- Legibilidade > esperteza. Se um comentário precisa explicar o quê o código
+  faz, reescreva o código de forma mais simples.
+- Respeite o sistema de tipos; não use tipos permissivos ou casts sem
+  justificativa.
+- Valide todo input externo no servidor antes de entrar no fluxo da aplicação.
+- Trate erros explicitamente. Não use `try/catch` genérico para esconder falhas,
+  fallback silencioso ou exposição de detalhes internos.
+- Não introduza abstrações, configurações, campos, endpoints ou dependências
+  especulativas. Procure utilitários existentes antes de criar novos.
+- Preserve alterações não relacionadas e considere complexidade, I/O, queries,
+  memória e renders quando a mudança processar dados ou atualizar UI.
 
-## Subagentes
-- Escolha modelo e esforço de acordo com o tamanho e o risco da tarefa.
-- Use explorer para leitura e mapeamento, worker para implementação definida e reviewer para corretude, segurança e arquitetura.
-- Não rode subagente sem tarefa concreta e delimitada.
+## Navegação e documentação
 
-## Skills
-- Use a skill disponível quando ela corresponder ao tipo de tarefa.
-- Para correções de bugs, priorize diagnóstico da causa raiz e evite workarounds.
+- Leia somente os trechos relevantes e não repita buscas sem motivo concreto.
+- Para bibliotecas, frameworks, SDKs, APIs, CLIs e serviços, consulte a
+  documentação oficial atual; use OpenAI Docs para produtos OpenAI/Codex e ctx7
+  para terceiros quando disponível.
 
-## Code Review Rules
-- Sinalize apenas problemas que possam causar comportamento incorreto, regressão, risco de segurança, quebra de contrato ou manutenção claramente mais difícil.
-- Priorize o caminho principal, os casos-limite e os efeitos nos consumidores; não transforme preferências de estilo em bloqueios.
-- Considere lint, formatação e convenções mecânicas responsabilidade dos checks automatizados do projeto.
-- Se não houver achados relevantes, declare isso explicitamente.
+## Subagentes e contexto
 
-## Comunicação
-- Seja direto e objetivo.
-- Evite resumo longo para tarefas simples.
+- Use `software-development-workflow` como entrada para alterações de software.
+- Escolha explorer para leitura, worker para implementação definida e reviewer
+  para corretude, segurança e arquitetura.
+- Não rode subagente sem tarefa delimitada; por padrão, use no máximo um
+  subagente somente leitura por vez e nunca paralelize escritores na mesma área.
+- Busque e leia apenas o necessário, prefira resumos com caminhos e símbolos e
+  execute checks focados antes de suítes amplas.
+- Use skills especializadas explicitamente apenas quando o roteamento indicar
+  uma necessidade concreta.
+
+## Memória
+
+- Memória é uma pista reutilizável, não substitui evidência atual do repositório.
+- Não registre segredos, credenciais, dados pessoais, estado temporário ou
+  hipóteses não verificadas.
+- Consulte `docs/memory-policy.md` para regras de retenção e atualização.
+
+## Git e comunicação
+
+- Preserve alterações locais e nunca reescreva histórico compartilhado sem
+  autorização explícita.
+- Seja direto e objetivo. Evite resumo longo para tarefas simples.
+- Reporte mudanças, validações, limitações e suposições relevantes.
 
 ## Validação
-- Toda mudança de lógica precisa de teste correspondente.
-- Testes devem cobrir os principais edge cases da funcionalidade.
-- Execute os checks disponíveis e relevantes ao tipo de alteração; não bloqueie documentação ou configuração em uma suíte sem relação.
+
+- Toda mudança de lógica precisa de teste correspondente e casos-limite
+  relevantes.
+- Valide cada fatia antes de iniciar a próxima; uma falha concreta ou contrato
+  inconsistente bloqueia o avanço até ser resolvido ou classificado.
+- Execute os gates relevantes ao tipo de alteração, amplie somente quando houver
+  risco, falha ou contrato afetado e rode `git diff --check`.
+- Não declare conclusão com falha concreta sem classificação.
